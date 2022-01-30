@@ -1,13 +1,13 @@
 {
   "name": "express-typescript-boilerplate",
   "version": "1.0.0",
-  "description": "A scalable boilerplate for express.js and typescript with mongodb config",
+  "description": "A scalable boilerplate for express.js and typescript with prisma config",
   "main": "index.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "npx prisma generate && tsc",
     "start": "nodemon ./dist/index.js",
-    "dev": "cross-env NODE_ENV=local nodemon --exec ts-node -- ./src/index.ts",
-    "prod": "cross-env NODE_ENV=production npm run build && npm run start",
+    "dev": "npx prisma generate && nodemon --exec ts-node -- ./src/index.ts",
+    "prod": "npm run build && npm run start",
     "clean": "rm -rf node_modules coverage dist .nyc_output",
     "lint": "tslint -t stylish --project \"tsconfig.json\""
   },
@@ -22,16 +22,15 @@
   },
   "homepage": "https://github.com/fabianferno/express-typescript-boilerplate#readme",
   "dependencies": {
+    "@prisma/client": "3.8.1",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
-    "cross-env": "7.0.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-jwt": "^6.1.0",
     "helmet": "^4.6.0",
     "http-status": "^1.2.0",
     "jwks-rsa": "^2.0.5",
-    "mongodb": "4.2.2",
     "morgan": "^1.10.0",
     "nocache": "^3.0.1"
   },
@@ -41,6 +40,7 @@
     "@types/node": "^10.9.4",
     "morgan": "^1.9.1",
     "nodemon": "2.0.15",
+    "prisma": "3.8.1",
     "ts-node": "^10.4.0",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",

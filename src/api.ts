@@ -1,4 +1,3 @@
-import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import * as nocache from "nocache";
 import * as express from "express";
@@ -22,8 +21,8 @@ class App {
     this.express.use(cors());
     this.express.use(morgan("dev"));
     this.express.use(nocache());
-    this.express.use(bodyParser.json());
-    this.express.use(bodyParser.urlencoded({ extended: true }));
+    this.express.use(express.json());
+    this.express.use(express.urlencoded({ extended: true }));
     this.express.use(helmet());
     this.express.use(express.static("public"));
   }
